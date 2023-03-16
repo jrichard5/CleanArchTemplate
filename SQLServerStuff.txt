@@ -1,0 +1,30 @@
+Downloaded SQL Server
+Downloaded Sql Server Studio
+
+Made my local account a dbcreator
+making a database using the local account
+Install the Nuget Package EntityFrameworkCore.SqlServer
+
+Pass the connection string as an argument
+
+
+
+Ok so two options for getting migrations to work
+1. dotnet ef database update  --project CommandService.Data   --startup-project CommandService
+--  this has connection string in appsettings, and a EntityContext constructor with options parameters.
+
+2.  dotnet ef migrations remove
+-- connection string hard coded (bad), and EntityContext with no parameters
+
+3.  Making a Factory? https://stackoverflow.com/questions/70273434/unable-to-resolve-service-for-type-%C2%A8microsoft-entityframeworkcore-dbcontextopti
+-- ok but I cannot get connection string?
+
+4.  The github template uses 
+-- Add-Migration InitialMigrationName -StartupProject Your.ProjectName.Web -Context AppDbContext -Project Your.ProjectName.Infrastructure
+-- not even dotnet ef.... I wonder if this some new stuff xD
+
+
+
+Going with (aka number 1)
+dotnet ef migrations add --startup-project .\Template_ASP_NET_Core_Web_API --project .\Infrrastructure_Layer FirstMigration
+dotnet ef database update --startup-project .\Template_ASP_NET_Core_Web_API --project .\Infrrastructure_Layer FirstMigration

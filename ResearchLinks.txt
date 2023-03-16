@@ -1,0 +1,17 @@
+About DbContext dispose
+- https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/
+- https://stackoverflow.com/questions/65913192/when-does-a-dbcontext-instance-get-disposed-in-asp-net-core-5
+
+
+About which database for a desktop app
+- https://stackoverflow.com/questions/2277747/what-is-the-best-database-for-a-c-sharp-desktop-app-no-networking
+- https://stackoverflow.com/questions/63874430/publish-c-sharp-desktop-application-with-sql-server-database
+- Chatgpt says SQLite (or MySQL or PostgreSQL)
+
+
+Mediatr
+- https://www.c-sharpcorner.com/article/cqrs-and-mediatr-pattern-implementation-using-net-core-6-web-api/
+
+
+AutoMapper Example
+- https://dotnettutorials.net/lesson/automapper-in-c-sharp/
