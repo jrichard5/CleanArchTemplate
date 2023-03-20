@@ -15,3 +15,35 @@ Mediatr
 
 AutoMapper Example
 - https://dotnettutorials.net/lesson/automapper-in-c-sharp/
+
+
+Storing Connection String
+- Env variable 
+* https://auth0.com/blog/secret-management-in-dotnet-applications/
+- Encrypt config file sections??? Microsoft --- ok nothing to do with jasons....
+* https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/connection-strings-and-configuration-files
+** I guess if it is going to be hosted online, might as well use a cloud service, so can use Azure Key Vault to store them.
+--- add XML config provider    https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0
+--- https://stackoverflow.com/questions/36062670/encrypted-configuration-in-asp-net-core
+
+Ok im just going to do user secrets, but If I was going to host this, I would use AzureKeyVault https://www.youtube.com/watch?v=zQp31BEGTwM
+
+--- There is a way in VS2019 to specify environment variables in the "Launch Profile" ---
+--- can make system envrionment variables ---  "setx"  and "/M"
+
+---display env vars code from --- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0
+*
+*var builder = WebApplication.CreateBuilder(args);
+*var app = builder.Build();
+*
+*foreach (var c in builder.Configuration.AsEnumerable())
+*{
+*    Console.WriteLine(c.Key + " = " + c.Value);
+*}
+*
+
+
+
+The Update Issue I remember I had at internship
+* https://stackoverflow.com/questions/62934010/the-instance-of-the-entity-type-cannot-be-tracked-because-another-instance-with
+

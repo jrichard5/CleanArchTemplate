@@ -12,3 +12,15 @@ Using https://www.c-sharpcorner.com/article/introduction-to-clean-architecture-a
 
 
 Dependency Injection -- https://www.c-sharpcorner.com/article/implementing-clean-architecture-on-net/
+
+
+TODO:
+1. Fix connection string --- impossible
+2. make POST, PUT, DELETE controller
+3. make ERD for general notecard app  (make sure it can be fitted for japanese learning notecards)
+4. Make console app that parses website to fill database  (SQLite)
+5. Research desktop app architecture
+6. Create desktop notecard app
+7. make it a package for Linux
+8. Host the webapi on Azure? or AWS? research this
+9. make a docker file for the database?

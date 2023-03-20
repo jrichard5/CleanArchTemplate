@@ -10,7 +10,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.ConfigureDbStuff(builder.Configuration.GetConnectionString("TheConnection"));
+
+
+
+
+builder.Services.ConfigureDbStuff(builder.Configuration["TheConnection"]);
+
+//builder.Services.ConfigureDbStuff(builder.Configuration.GetConnectionString("TheConnection"));
 //builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 var handlerAssembly = AppDomain.CurrentDomain.Load("ApplicationLayer");

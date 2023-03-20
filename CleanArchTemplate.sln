@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationLayer", "src\App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfrastructureLayer", "src\InfrastructureLayer\InfrastructureLayer.csproj", "{B8EC5E0A-8541-490A-A352-A2957D013B05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETCoreWebApiTemplate", "src\ASPNETCoreWebApiTemplate\ASPNETCoreWebApiTemplate.csproj", "{B9E18910-1B39-4C9E-B613-ECFC6A63E373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPNETCoreWebApiTemplate", "src\ASPNETCoreWebApiTemplate\ASPNETCoreWebApiTemplate.csproj", "{B9E18910-1B39-4C9E-B613-ECFC6A63E373}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,20 +20,23 @@ namespace InfrrastructureLayer.Repositories
         }
 
 
-        public async Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            await this._dbContext.Set<T>().AddAsync(entity);
+            var result = await this._dbContext.Set<T>().AddAsync(entity);
+            await this._dbContext.SaveChangesAsync();
+            return result.Entity;
+        }
+
+        public async Task DeleteAsync(T entity)
+        {
+            this._dbContext.Set<T>().Remove(entity);
             await this._dbContext.SaveChangesAsync();
         }
 
-        public void DeleteAsync()
+        public async Task<T> FindByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public T FindById(int id)
-        {
-            throw new NotImplementedException();
+            var entity = await this._dbContext.Set<T>().FindAsync(id);
+            return entity;
         }
 
         public async Task<List<T>> GetAll()
@@ -42,9 +45,11 @@ namespace InfrrastructureLayer.Repositories
             return entities;
         }
 
-        public void UpdateAsync()
+        //TODO:  Wanted to get the return value from update() and then return that back to the handler function to show that it was updated.  But now that seems kinda pointless.
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            this._dbContext.Set<T>().Update(entity);
+            await this._dbContext.SaveChangesAsync();
         }
     }
 

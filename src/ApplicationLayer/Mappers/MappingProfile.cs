@@ -13,7 +13,9 @@ namespace ApplicationLayer.Mappers
     {
         public MappingProfile()
         {
-               CreateMap<Cat, CatDTO>();
+            CreateMap<Cat, CatDTO>();
+            CreateMap<Cat, CreateCatDto>();
+            CreateMap<CreateCatDto, Cat>();
         }
     }
 }
