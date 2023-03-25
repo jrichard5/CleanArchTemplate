@@ -1,0 +1,46 @@
+﻿using Microsoft.AspNetCore.Http;
+using System.Net;
+
+namespace InfrastructureLayer.InfrastructureOrMiddleWare
+{
+    public class MiddlewareException
+    {
+
+        //TODO: Add Logging
+        private readonly RequestDelegate _next;
+
+        public MiddlewareException(RequestDelegate next)
+        {
+            _next = next;
+        }
+        public async Task InvokeAsync(HttpContext httpContext)
+        {
+            try
+            {
+                await _next(httpContext);
+            }
+            //If New Exception
+                 /*catch (exceptionClass randomName)
+                 *  await HandleExceptionAsync(httpContext, randomName);
+                 */
+            catch (Exception ex)
+            {
+                await HandleExceptionAsync(httpContext, ex);
+            }
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            var errorDetails = exception switch
+            {
+                // exceptionclass => "the message"
+                _ => new ErrorDetails { StatusCode = 418, Message = "The teapot code + " + $"{exception.Message}" }
+            };
+
+            await context.Response.WriteAsync(errorDetails.ToString());
+        }
+    }
+}

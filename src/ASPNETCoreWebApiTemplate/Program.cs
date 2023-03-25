@@ -1,4 +1,5 @@
 using ApplicationLayer.Mappers;
+using InfrastructureLayer.InfrastructureOrMiddleWare;
 using InfrrastructureLayer;
 using System.Reflection;
 
@@ -33,6 +34,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//TODO: Remove these comments for final commmit
+//if (!app.Environment.IsDevelopment()) {
+//app.UseExceptionHandler();
+app.ConfigureCustomExceptionMiddleware();
+
 
 app.UseHttpsRedirection();
 
