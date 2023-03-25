@@ -11,14 +11,15 @@ namespace InfrrastructureLayer
         {
 
         }
-       /*
-        public EntityContext() : base()
-        {
+        /*
+         public EntityContext() : base()
+         {
 
-        }
-       */
+         }
+        */
 
-        public DbSet<Cat> Cats { get; set; }
+        //Need virtual for Unit test (CatRepoTests.  Otherwise System.NotSupportedException : Unsupported expression: x => x.Cats)
+        public virtual DbSet<Cat> Cats { get; set; }
 
         //TODO: delete this from final
         //from https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/
