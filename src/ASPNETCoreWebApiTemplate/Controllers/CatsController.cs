@@ -55,7 +55,7 @@ namespace TemplateASPNETCoreWebAPI.Controllers
         {
             if (id < 0)
             {
-                return BadRequest();
+                throw new Exception("why you do this???");
             }
             var catId = await _mediator.Send(new UpdateCatCommand { CatId = id, CreateCatDto = newCatDto }) ;
             return Ok(catId);

@@ -47,3 +47,7 @@ Ok im just going to do user secrets, but If I was going to host this, I would us
 The Update Issue I remember I had at internship
 * https://stackoverflow.com/questions/62934010/the-instance-of-the-entity-type-cannot-be-tracked-because-another-instance-with
 
+
+
+Exception Middleware I didn't do this at internship.
+- https://code-maze.com/global-error-handling-aspnetcore/
