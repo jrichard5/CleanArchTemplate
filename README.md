@@ -4,12 +4,20 @@
 TODO:
 1. Fix connection string --- impossible (unless system env variable, or Azure Key Vault (or other cloud solutions), maybe just a simple read from file)
 2. ~~make POST, PUT, DELETE controller~~
-3. Middleware  Exception Handling
-4. Unit Testing
+3. ~~Middleware  Exception Handling~~
+4. ~~Unit Testing~~
 5. Fluent Validation (somewhat will help against cross site scripting)
 6. Look how to encode data to prevent crosssite scripting
 7. Add Logging
-8. Authenication 
+8. Add rules to databse (like CatName can only be 64 chars long)
+9. create/Read CSV files
+
+
+Extra TODOs:
+1. A more complicated LINQ query (i think thats two querys....but it looks better this way....)
+2. Fluent validation with a collection
+5. Authenication 
+
 
 Extra info
 * SQLServerStuff.txt

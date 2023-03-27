@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using System.Net;
 
 namespace InfrastructureLayer.InfrastructureOrMiddleWare
@@ -23,6 +24,10 @@ namespace InfrastructureLayer.InfrastructureOrMiddleWare
                  /*catch (exceptionClass randomName)
                  *  await HandleExceptionAsync(httpContext, randomName);
                  */
+            catch(ArgumentException ex)
+            {
+                await HandleExceptionAsync(httpContext, ex);
+            }
             catch (Exception ex)
             {
                 await HandleExceptionAsync(httpContext, ex);
@@ -37,6 +42,7 @@ namespace InfrastructureLayer.InfrastructureOrMiddleWare
             var errorDetails = exception switch
             {
                 // exceptionclass => "the message"
+                ArgumentException => new ErrorDetails { StatusCode = 422, Message = exception.Message },
                 _ => new ErrorDetails { StatusCode = 418, Message = "The teapot code + " + $"{exception.Message}" }
             };
 

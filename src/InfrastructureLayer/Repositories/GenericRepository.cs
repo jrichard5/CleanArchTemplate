@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ApplicationLayer.Entities;
-using ApplicationLayer.InterfaceRepositories;
-using AutoMapper;
+﻿using ApplicationLayer.InterfaceRepositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace InfrrastructureLayer.Repositories

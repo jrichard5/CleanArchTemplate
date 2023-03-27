@@ -1,7 +1,9 @@
 ﻿using ApplicationLayer.CQRS.Commands;
 using ApplicationLayer.Entities;
+using ApplicationLayer.FluentValidators;
 using ApplicationLayer.InterfaceRepositories;
 using AutoMapper;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,9 @@ namespace ApplicationLayer.CQRSHandlers.CommandHandlers
 
         public async Task<int> Handle(CreateNewCatCommand request, CancellationToken cancellationToken)
         {
+            CreateCatDtoValidator validator = new CreateCatDtoValidator();
+            validator.ValidateOrThrowInfoException(request.CreateCatDto);
+
             var catEntity = _mapper.Map<Cat>(request.CreateCatDto);
             var catEntityPlusId = await _catRepository.AddAsync(catEntity);
             return catEntityPlusId.CatId;
