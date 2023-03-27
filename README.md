@@ -6,8 +6,11 @@ TODO:
 2. ~~make POST, PUT, DELETE controller~~
 3. ~~Middleware  Exception Handling~~
 4. ~~Unit Testing~~
-5. Fluent Validation (somewhat will help against cross site scripting)
+5. ~~Fluent Validation (somewhat will help against cross site scripting)~~
+* Fluent Validator unit test
 6. Look how to encode data to prevent crosssite scripting
+*May need to use the AntiXSS library or HTMLSanitizer.  https://stackoverflow.com/questions/12618432/stopping-xss-when-using-webapi
+* supposely 
 7. Add Logging
 8. Add rules to databse (like CatName can only be 64 chars long)
 9. create/Read CSV files

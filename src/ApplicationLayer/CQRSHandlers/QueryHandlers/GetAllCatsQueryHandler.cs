@@ -4,6 +4,7 @@ using ApplicationLayer.Entities;
 using ApplicationLayer.InterfaceRepositories;
 using AutoMapper;
 using MediatR;
+using System.Web;
 
 namespace ApplicationLayer.CQRSHandlers.QueryHandlers
 {
@@ -22,6 +23,11 @@ namespace ApplicationLayer.CQRSHandlers.QueryHandlers
         {
             var catList = await _catRepository.GetAll();
             var catDtoList = _mapper.Map<List<Cat>, List<CatDTO>>(catList);
+            foreach (var cat in catDtoList)
+            {
+                cat.CatName = HttpUtility.HtmlEncode(cat.CatName);
+            }
+
 
             return catDtoList;
         }

@@ -12,6 +12,8 @@ namespace TemplateASPNETCoreWebAPI.Controllers
      * TODO: Questions
      * -Should I return a simple type like an Task<int>  or use Task<IActionResult> so that I can return things such as "Badrequest()" "NoContent()" "Content()"
      * 
+     * 
+     * - I want to use HttpUtility.HtmlEncode to help prevent XXS attacks.  I think it would be better to put it in the mediator request handler.
      */
 
 
@@ -28,8 +30,8 @@ namespace TemplateASPNETCoreWebAPI.Controllers
         [HttpGet (Name = "GetCats")]
         public async Task<List<CatDTO>> GetAllCatsAsync()
         {
-            var Cats = await _mediator.Send(new GetAllCatsQuery());
-            return Cats;
+            var cats = await _mediator.Send(new GetAllCatsQuery());
+            return cats;
         }
 
         [HttpGet ("{id}", Name = "GetSingleCat")]
