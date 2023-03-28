@@ -11,7 +11,7 @@ TODO:
 6. ~~Look how to encode data to prevent crosssite scripting~~
 *May need to use the AntiXSS library or HTMLSanitizer.  https://stackoverflow.com/questions/12618432/stopping-xss-when-using-webapi
 * Oh yea, can also have SJ code in the URL query, and if the webpage displays that query back to user, the JS will run.  (Example:  you search book, somewhere on the webpage it says book, but instead of book, now it is JS)
-7. Add Logging
+7. ~~Add Logging~~
 8. Add rules to databse (like CatName can only be 64 chars long)
 9. create/Read CSV files
 

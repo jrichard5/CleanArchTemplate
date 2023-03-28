@@ -1,6 +1,7 @@
 using ApplicationLayer.Mappers;
 using InfrastructureLayer.InfrastructureOrMiddleWare;
 using InfrrastructureLayer;
+using System.Diagnostics;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Logging.ClearProviders(); // The app already has AddConsole, AddDebug, and AddEventSourceLogger()??
+//builder.Logging.AddDebug(); // This appears in Visual Studio's Output window (in my visual studio it is below the text editor window, same tab area package manager console and error list)
+Debug.WriteLine("hi");
 
 
 

@@ -4,6 +4,7 @@ using ApplicationLayer.DTO_or_Interface;
 using ApplicationLayer.Entities;
 using ApplicationLayer.InterfaceRepositories;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace xUnitTestProject.mediatrHandlerTests
@@ -35,13 +36,14 @@ namespace xUnitTestProject.mediatrHandlerTests
 
             var mockRepo = new Mock<ICatRepository>();
             var mockMapper = new Mock<IMapper>();
+            var mockLooger = new Mock<ILogger<CreateNewCatCommandHandler>>(); //Get a Null error if I don't mock it
             mockMapper.Setup(m => m.Map<Cat>(It.IsAny<CreateCatDto>()))
                 .Returns(cat);
 
             mockRepo.Setup(repo => repo.AddAsync(cat))
                 .ReturnsAsync(cat2);
 
-            var createHandler = new CreateNewCatCommandHandler(mockRepo.Object, mockMapper.Object);
+            var createHandler = new CreateNewCatCommandHandler(mockRepo.Object, mockMapper.Object, mockLooger.Object);
 
             var result = createHandler.Handle(createCatCommand, It.IsAny<CancellationToken>()).Result;
 
@@ -64,7 +66,7 @@ namespace xUnitTestProject.mediatrHandlerTests
             mockRepo.Setup(repo => repo.AddAsync(cat))
                 .ReturnsAsync(cat2);
 
-            var createHandler = new CreateNewCatCommandHandler(mockRepo.Object, mockMapper.Object);
+            var createHandler = new CreateNewCatCommandHandler(mockRepo.Object, mockMapper.Object, It.IsAny<ILogger<CreateNewCatCommandHandler>>());
             //var result = createHandler.Handle(createCatCommand, It.IsAny<CancellationToken>()).Result;
             await Assert.ThrowsAsync<ArgumentException>(async () => await createHandler.Handle(invalidCreateCatCommand, It.IsAny<CancellationToken>()));
         }
@@ -83,7 +85,7 @@ namespace xUnitTestProject.mediatrHandlerTests
             mockRepo.Setup(repo => repo.AddAsync(cat))
                 .ReturnsAsync(cat2);
 
-            var createHandler = new CreateNewCatCommandHandler(mockRepo.Object, mockMapper.Object);
+            var createHandler = new CreateNewCatCommandHandler(mockRepo.Object, mockMapper.Object, It.IsAny<ILogger<CreateNewCatCommandHandler>>());
             //var result = createHandler.Handle(createCatCommand, It.IsAny<CancellationToken>()).Result;
             await Assert.ThrowsAsync<ArgumentException>(async () => await createHandler.Handle(invalidCreateCatCommand, It.IsAny<CancellationToken>()));
         }
