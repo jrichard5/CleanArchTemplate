@@ -1,5 +1,11 @@
 # Template_CleanArchAPI
 
+To update database:
+
+cd src
+dotnet ef migrations add --startup-project .\ASPNETCoreWebApiTemplate --project .\InfrastructureLayer customNameOfMigration
+dotnet ef database update --startup-project .\ASPNETCoreWebApiTemplate --project .\InfrastructureLayer
+
 
 TODO:
 1. Fix connection string --- impossible (unless system env variable, or Azure Key Vault (or other cloud solutions), maybe just a simple read from file)
@@ -12,7 +18,7 @@ TODO:
 *May need to use the AntiXSS library or HTMLSanitizer.  https://stackoverflow.com/questions/12618432/stopping-xss-when-using-webapi
 * Oh yea, can also have SJ code in the URL query, and if the webpage displays that query back to user, the JS will run.  (Example:  you search book, somewhere on the webpage it says book, but instead of book, now it is JS)
 7. ~~Add Logging~~
-8. Add rules to databse (like CatName can only be 64 chars long)
+8. ~~Add rules to databse (like CatName can only be 64 chars long)~~
 9. create/Read CSV files
 
 

@@ -18,6 +18,15 @@ namespace InfrrastructureLayer
          }
         */
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cat>()
+                .Property(b => b.CatName)
+                .HasMaxLength(64);
+            base.OnModelCreating(modelBuilder);  // According to stackoverflow, this does nothing, but may as well keep in case they add something later?
+        }
+
         //Need virtual for Unit test (CatRepoTests.  Otherwise System.NotSupportedException : Unsupported expression: x => x.Cats)
         public virtual DbSet<Cat> Cats { get; set; }
 
