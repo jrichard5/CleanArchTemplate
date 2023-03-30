@@ -1,8 +1,12 @@
 ﻿using ApplicationLayer.CQRS.Commands;
 using ApplicationLayer.CQRS.Queries;
 using ApplicationLayer.DTO_or_Interface;
+using CsvHelper;
 using MediatR;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
+using System.Net;
 using System.Text.Json;
 
 namespace TemplateASPNETCoreWebAPI.Controllers
@@ -78,6 +82,20 @@ namespace TemplateASPNETCoreWebAPI.Controllers
         {
             var catsCSVFile = await _mediator.Send(new GetAllCatsCSV());
             return File(catsCSVFile, "text/csv", "TheCatsTableFromJRsWebApiTemplate");
+        }
+
+        [HttpPost("CreateManyCatsCSV")]
+        public async Task<int> CSVtoDatabase(IFormFile file)
+        {
+            var numberOfCats = 0;
+            using (var reader = new StreamReader(file.OpenReadStream()))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<CreateCatDto>();
+                numberOfCats = await _mediator.Send(new CreateManyCatsCSVCommand { CreateCatDtos = records });
+            }
+            return numberOfCats;
+
         }
     }
 }
