@@ -19,6 +19,23 @@ namespace InfrrastructureLayer.Repositories
             return result.Entity;
         }
 
+        public async Task AddButNoSave(T entity)
+        {
+            await this._dbContext.Set<T>().AddAsync(entity);
+        }
+
+        public async Task<int> AddManyFromCSV(IEnumerable<T> entities)
+        {
+            var count = 0;
+            foreach (var entity in entities)
+            {
+                await this._dbContext.Set<T>().AddAsync(entity);
+                count++;
+            }
+            await this._dbContext.SaveChangesAsync();
+            return count;
+        }
+
         public async Task DeleteAsync(T entity)
         {
             this._dbContext.Set<T>().Remove(entity);
@@ -35,6 +52,11 @@ namespace InfrrastructureLayer.Repositories
         {
             var entities = await this._dbContext.Set<T>().ToListAsync();
             return entities;
+        }
+
+        public async Task SaveAllChanges()
+        {
+            await this._dbContext.SaveChangesAsync();
         }
 
         //TODO:  Wanted to get the return value from update() and then return that back to the handler function to show that it was updated.  But now that seems kinda pointless.

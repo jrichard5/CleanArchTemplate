@@ -7,5 +7,8 @@
         public Task<T> AddAsync(T entity);
         public Task UpdateAsync(T entity);
         public Task DeleteAsync(T entity);
+        public Task<int> AddManyFromCSV(IEnumerable<T> entities);
+        public Task AddButNoSave(T entity);
+        public Task SaveAllChanges();
     }
 }
