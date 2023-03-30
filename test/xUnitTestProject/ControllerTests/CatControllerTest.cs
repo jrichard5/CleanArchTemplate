@@ -1,13 +1,7 @@
 ﻿using ApplicationLayer.CQRS.Queries;
 using ApplicationLayer.DTO_or_Interface;
-using ApplicationLayer.Entities;
 using MediatR;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TemplateASPNETCoreWebAPI.Controllers;
 
 namespace xUnitTestProject.ControllerTests
@@ -24,7 +18,6 @@ namespace xUnitTestProject.ControllerTests
                 new CatDTO{ CatId = 2, CatName = "chhese"}
             };
 
-
             var mediator = new Mock<IMediator>();
             mediator.Setup(med => med.Send(It.IsAny<GetAllCatsQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(cats);
@@ -35,7 +28,6 @@ namespace xUnitTestProject.ControllerTests
             Assert.Equal(2, actual.Count);
             Assert.Equal("Mr.Mewos", actual[0].CatName);
             Assert.Equal(2, actual[1].CatId);
-
         }
     }
 }

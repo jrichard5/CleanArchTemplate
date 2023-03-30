@@ -26,5 +26,6 @@ Ok so two options for getting migrations to work
 
 
 Going with (aka number 1)
-dotnet ef migrations add --startup-project .\Template_ASP_NET_Core_Web_API --project .\Infrrastructure_Layer FirstMigration
-dotnet ef database update --startup-project .\Template_ASP_NET_Core_Web_API --project .\Infrrastructure_Layer FirstMigration
+cd src
+dotnet ef migrations add --startup-project .\ASPNETCoreWebApiTemplate --project .\InfrastructureLayer customNameOfMigration
+dotnet ef database update --startup-project .\ASPNETCoreWebApiTemplate --project .\InfrastructureLayer

@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace xUnitTestProject.RepoTests
 {
-
     //This is the post that gave me this code
     //https://stackoverflow.com/questions/40476233/how-to-mock-an-async-repository-with-entity-framework-core
     internal class TestAsyncQueryProviderFromStackOverFlow<TEntity> : IAsyncQueryProvider
@@ -50,10 +44,10 @@ namespace xUnitTestProject.RepoTests
             return Execute<TResult>(expression);
         }
         /*
-public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
-{
-   return Task.FromResult(Execute<TResult>(expression));
-}*/
+        public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
+        {
+           return Task.FromResult(Execute<TResult>(expression));
+        }*/
     }
 
     internal class TestAsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, IQueryable<T>
@@ -118,7 +112,6 @@ public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationTo
         {
             _inner.Dispose();
             return new ValueTask();
-            
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using ApplicationLayer.CQRS.Queries;
-using ApplicationLayer.CQRS.Commands;
+﻿using ApplicationLayer.CQRS.Commands;
+using ApplicationLayer.CQRS.Queries;
 using ApplicationLayer.DTO_or_Interface;
-using ApplicationLayer.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -27,14 +26,14 @@ namespace TemplateASPNETCoreWebAPI.Controllers
             this._mediator = mediator;
 
         }
-        [HttpGet (Name = "GetCats")]
+        [HttpGet(Name = "GetCats")]
         public async Task<List<CatDTO>> GetAllCatsAsync()
         {
             var cats = await _mediator.Send(new GetAllCatsQuery());
             return cats;
         }
 
-        [HttpGet ("{id}", Name = "GetSingleCat")]
+        [HttpGet("{id}", Name = "GetSingleCat")]
         public async Task<IActionResult> GetOneCatAsync(int id)
         {
             var Cat = await _mediator.Send(new GetOneCatQuery { Id = id });
@@ -45,21 +44,21 @@ namespace TemplateASPNETCoreWebAPI.Controllers
             return Content(JsonSerializer.Serialize(Cat));
         }
 
-        [HttpPost (Name = "CreateEntryForNewCat")]
+        [HttpPost(Name = "CreateEntryForNewCat")]
         public async Task<IActionResult> PostNewCatAsync([FromBody] CreateCatDto newCatDto)
         {
             var id = await _mediator.Send(new CreateNewCatCommand { CreateCatDto = newCatDto });
             return Content(JsonSerializer.Serialize(id));
         }
 
-        [HttpPut ("{id}", Name = "UpdateCat")]
-        public async Task<IActionResult> UpdateCatInfo( int id, [FromBody] CreateCatDto newCatDto)
+        [HttpPut("{id}", Name = "UpdateCat")]
+        public async Task<IActionResult> UpdateCatInfo(int id, [FromBody] CreateCatDto newCatDto)
         {
             if (id < 0)
             {
                 throw new Exception("why you do this???");
             }
-            var catId = await _mediator.Send(new UpdateCatCommand { CatId = id, CreateCatDto = newCatDto }) ;
+            var catId = await _mediator.Send(new UpdateCatCommand { CatId = id, CreateCatDto = newCatDto });
             return Ok(catId);
         }
 
@@ -72,6 +71,13 @@ namespace TemplateASPNETCoreWebAPI.Controllers
             }
             var catId = await _mediator.Send(new DeleteCatCommand { CatId = id });
             return Ok(catId);
+        }
+
+        [HttpGet("GetEntireTableCSV")]
+        public async Task<FileResult> DownloadCSV()
+        {
+            var catsCSVFile = await _mediator.Send(new GetAllCatsCSV());
+            return File(catsCSVFile, "text/csv", "TheCatsTableFromJRsWebApiTemplate");
         }
     }
 }

@@ -15,9 +15,7 @@ builder.Services.AddSwaggerGen();
 
 //builder.Logging.ClearProviders(); // The app already has AddConsole, AddDebug, and AddEventSourceLogger()??
 //builder.Logging.AddDebug(); // This appears in Visual Studio's Output window (in my visual studio it is below the text editor window, same tab area package manager console and error list)
-Debug.WriteLine("hi");
-
-
+//Debug.WriteLine("hi");
 
 builder.Services.ConfigureDbStuff(builder.Configuration["TheConnection"]);
 
@@ -26,8 +24,6 @@ builder.Services.ConfigureDbStuff(builder.Configuration["TheConnection"]);
 
 var handlerAssembly = AppDomain.CurrentDomain.Load("ApplicationLayer");
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(handlerAssembly));
-
-
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();

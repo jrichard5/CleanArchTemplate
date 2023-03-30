@@ -3,11 +3,6 @@ using InfrrastructureLayer;
 using InfrrastructureLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace xUnitTestProject.RepoTests
 {
@@ -37,8 +32,6 @@ namespace xUnitTestProject.RepoTests
             Assert.Equal(4, results[4].CatId);
             Assert.Equal("Mr.Test", results[0].CatName);
             Assert.Contains(results, cat => cat.CatOwner == "CookieTest");
-
-
         }
     }
 }

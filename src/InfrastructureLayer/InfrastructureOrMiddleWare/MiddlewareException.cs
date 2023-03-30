@@ -1,12 +1,10 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System.Net;
 
 namespace InfrastructureLayer.InfrastructureOrMiddleWare
 {
     public class MiddlewareException
     {
-
         //TODO: Add Logging
         private readonly RequestDelegate _next;
 

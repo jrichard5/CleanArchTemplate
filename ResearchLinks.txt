@@ -51,3 +51,8 @@ The Update Issue I remember I had at internship
 
 Exception Middleware I didn't do this at internship.
 - https://code-maze.com/global-error-handling-aspnetcore/
+
+
+Exporting a CSV
+--  https://stackoverflow.com/questions/46976804/returning-csv-from-net-core-controller
+--  https://stackoverflow.com/questions/55085778/asp-net-web-api-csv-helper-writing-to-the-stream-doesnt-work

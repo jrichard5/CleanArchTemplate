@@ -1,5 +1,4 @@
 ﻿using ApplicationLayer.DTO_or_Interface;
-using ApplicationLayer.Entities;
 using MediatR;
 
 namespace ApplicationLayer.CQRS.Commands

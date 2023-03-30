@@ -2,12 +2,6 @@
 using InfrrastructureLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InfrrastructureLayer
 {
@@ -17,15 +11,12 @@ namespace InfrrastructureLayer
         //Looking at a working example in Github.  https://github.com/ardalis/CleanArchitecture/blob/main/src/Clean.Architecture.Infrastructure/StartupSetup.cs
         public static void ConfigureDbStuff(this IServiceCollection services, string connectionString)
         {
-
             services.AddDbContext<EntityContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
             services.AddScoped<ICatRepository, CatRepository>();
         }
-
-
         //TODO: Remove this for final commit
         //This is an extension method that you call in the WebAPI's startup
         //public static IServiceCollection ConfigureServices(this IServiceCollection services)
@@ -48,7 +39,5 @@ namespace InfrrastructureLayer
             optionsBuilder.
         }
         */
-
-
     }
 }

@@ -5,7 +5,6 @@ namespace xUnitTestProject
         [Fact]
         public void Test1()
         {
-
         }
     }
 }

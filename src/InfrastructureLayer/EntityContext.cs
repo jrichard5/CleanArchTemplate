@@ -1,24 +1,14 @@
-﻿
-using ApplicationLayer.Entities;
+﻿using ApplicationLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace InfrrastructureLayer
 {
     public class EntityContext : DbContext
     {
-        
         public EntityContext(DbContextOptions<EntityContext> options) : base(options)
         {
-
         }
-        /*
-         public EntityContext() : base()
-         {
-
-         }
-        */
-
-
+        //public EntityContext() : base(){}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cat>()
@@ -29,6 +19,8 @@ namespace InfrrastructureLayer
 
         //Need virtual for Unit test (CatRepoTests.  Otherwise System.NotSupportedException : Unsupported expression: x => x.Cats)
         public virtual DbSet<Cat> Cats { get; set; }
+
+
 
         //TODO: delete this from final
         //from https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/

@@ -7,12 +7,9 @@ namespace xUnitTestProject.ValdiationTests
 {
     public class CatDtoValidationTests
     {
-    
-
         [Fact]
         public async Task CreateCatDtoValidator_Valid_Success()
         {
-
             var validCatDto = new CreateCatDto { CatName = "Test", CatOwner = "TestOwner" };
             var validator = new CreateCatDtoValidator();
 

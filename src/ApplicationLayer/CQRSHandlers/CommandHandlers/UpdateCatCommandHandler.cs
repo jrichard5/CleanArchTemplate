@@ -18,7 +18,6 @@ namespace ApplicationLayer.CQRSHandlers.CommandHandlers
             _mapper = mapper;
         }
 
-
         //Using Automapper to update values  https://stackoverflow.com/questions/2374689/automapper-update-property-values-without-creating-a-new-object
         public async Task<int> Handle(UpdateCatCommand request, CancellationToken cancellationToken)
         {
