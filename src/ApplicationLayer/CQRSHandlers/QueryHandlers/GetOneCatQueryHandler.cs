@@ -21,8 +21,8 @@ namespace ApplicationLayer.CQRSHandlers.QueryHandlers
         {
             var nonDtoCat =  await _catRepository.FindByIdAsync(request.Id);
             var dtoCat = _mapper.Map<CatDTO>(nonDtoCat);
-            return dtoCat;
 
+            return dtoCat;
         }
     }
 }

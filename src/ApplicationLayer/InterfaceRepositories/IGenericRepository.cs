@@ -1,6 +1,4 @@
-﻿using ApplicationLayer.Entities;
-
-namespace ApplicationLayer.InterfaceRepositories
+﻿namespace ApplicationLayer.InterfaceRepositories
 {
     public interface IGenericRepository<T> where T : class
     {

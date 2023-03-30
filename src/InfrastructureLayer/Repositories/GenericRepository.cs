@@ -6,12 +6,11 @@ namespace InfrrastructureLayer.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly EntityContext _dbContext;
-
+        
         public GenericRepository(EntityContext dbContext)
         {
             this._dbContext = dbContext;
         }
-
 
         public async Task<T> AddAsync(T entity)
         {
@@ -45,5 +44,4 @@ namespace InfrrastructureLayer.Repositories
             await this._dbContext.SaveChangesAsync();
         }
     }
-
 }

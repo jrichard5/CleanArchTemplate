@@ -26,7 +26,6 @@ namespace ApplicationLayer.CQRSHandlers.CommandHandlers
             CreateCatDtoValidator validator = new CreateCatDtoValidator();
             validator.ValidateOrThrowInfoException(request.CreateCatDto);
 
-
             var catEntity = _mapper.Map<Cat>(request.CreateCatDto);
             _logger.LogInformation("Right before adding");
             var catEntityPlusId = await _catRepository.AddAsync(catEntity);
